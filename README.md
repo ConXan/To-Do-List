@@ -3,7 +3,8 @@
 ## A simplified, command-line To-Do list / Task Manager.
 
 Welcome to my first project (ever). This was built primarily for practice, also serving as a hands-on way for me to delve deeper into the C programming language (and Makefile!). 
-At its core, this to-do list provides you with a simple list tracking your tasks (up to 999!!), using file I/O. More specific, you can:
+At its core, this to-do list provides you with a simple list tracking your tasks (up to 999!!), using file I/O.
+More specific, you can:
 
 * Add a task to the list,
 * Remove a task from the list,
