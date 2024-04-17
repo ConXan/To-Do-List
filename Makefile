@@ -20,8 +20,10 @@ $(TARGET): $(OBJS)
 
 OBJDIR = obj
 
+SRCDIR = src
+
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
-    $(CC) -c $< -o $@
+	$(CC) -c $< -o $@
 
 #Clean files
 clean:
