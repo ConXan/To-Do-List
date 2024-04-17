@@ -18,6 +18,11 @@ $(TARGET): $(OBJS)
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $<
 
+OBJDIR = obj
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+    $(CC) -c $< -o $@
+
 #Clean files
 clean:
 	rm -f $(OBJS) $(TARGET)
