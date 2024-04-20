@@ -20,9 +20,13 @@ Here are some screenshots showcasing the functionality of the project:
 
 ![Screenshot 2024-04-17 152321](https://github.com/ConXan/To-Do-List/assets/146641298/c477807e-7ad1-4fde-9c93-79b47c024402)
 
+ ㅤ
+
 2. Random list, with the third task completed
 
 ![Screenshot 2024-04-17 151908](https://github.com/ConXan/To-Do-List/assets/146641298/23145d9f-39f5-4dce-9bd9-da179bdafe4f)
+
+ㅤ
 
 3. Deletion of the 2nd task from the previous example
 
@@ -41,4 +45,31 @@ Also having downloaded Makefile and Git will make the whole process way more str
 
 **Clone the Repository**
 ```bash
-git clone 
+git clone https://github.com/ConXan/To-Do-List.git
+```
+
+**Navigate to the corresponding directory**
+```bash
+cd To-Do-List
+```
+
+**Compile with Makefile**
+```bash
+make
+```
+
+*OR* (if you don't have Makefile installed)
+```bash
+gcc -Iinclude -c -o obj/fun1.o src/fun1.c
+gcc -Iinclude -c -o obj/fun2.o src/fun2.c
+gcc -Iinclude -c -o obj/main.o src/main.c
+gcc -o task obj/fun1.o obj/fun2.o obj/main.o
+```
+**Run the program**
+```bash
+./task
+```
+Done! Now you can use ./task (while in the directory) whenever you want to use the program.
+
+### 2. Windows
+Almost the same procedure, however if you don't have Makefile and Git installed, you can download the zip from this repository and compile with the aforementioned commands (MinGW has to be installed and added to your PATH) in command prompt.
