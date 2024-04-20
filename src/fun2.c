@@ -6,6 +6,7 @@
 
 #define MAX_TOTAL 130
 
+//Function that adds a task to the list
 int addTask(Task * task) {
     char buffer[MAX_TOTAL];
     char str[MAX_LEN];
@@ -54,10 +55,10 @@ int addTask(Task * task) {
     }
 
     
-    fscanf(temp,"%d",&count);
+    fscanf(temp,"%d",&count); //Extract count of tasks in list
     rewind(temp);
 
-    //for prev
+    //Write the current list in the prev file
     while (fgets(buffer,sizeof(buffer),fp) != NULL) {
         fputs(buffer,tmp);
     }
@@ -72,6 +73,7 @@ int addTask(Task * task) {
     fputs(buffer,fp);
     fprintf(temp,"%d",task->id);
 
+    //Last action is an addition
     fprintf(back,"%d",1);
 
     fclose(fp);
@@ -81,6 +83,7 @@ int addTask(Task * task) {
     return 0;
 }
 
+//Function that removes a task from the list
 int removeTask(int num) {
     int id, i, cnt, c, test;
     char buffer[MAX_TOTAL];
@@ -140,6 +143,8 @@ int removeTask(int num) {
         fclose(tmp);
         return 1;
     }
+
+    //Create a 2D array with the tasks
     for (i = 0; i < cnt; i ++) {
         ar[i] = (char *)malloc(MAX_TOTAL*sizeof(char));
         if (ar[i] == NULL) {
@@ -178,6 +183,8 @@ int removeTask(int num) {
     }
 
     fprintf(temp,"%d",--cnt);
+
+    //Last action is a removal
     fprintf(back,"%d",2);
 
     rename("data/main.txt","data/prev.txt");
@@ -213,11 +220,11 @@ int takeback(void) {
     fscanf(back,"%d",&num);
     rewind(back);
 
-    if (num == 5) { //last ac was takeback
+    if (num == 5) { //Last action was a takeback
         fclose(back);
         fclose(tmp);
         return -1;
-    } else if (num == 0 || num == 3) { //last ac print list
+    } else if (num == 0 || num == 3) { //Last action was a 'Print list' or no actions have occured yet
         fclose(back);
         fclose(tmp);
         return -2;
@@ -225,15 +232,19 @@ int takeback(void) {
 
     fscanf(tmp,"%d",&count);
     rewind(tmp);
-    if (num == 1) { //add was last action
-        fprintf(tmp,"%d",--count);
-    } else if (num == 2) { //rm was last ac
+    
+    if (num == 1) { //Last action was an addition
+        fprintf(tmp,"%d",--count); //Updates the number of the tasks accordingly
+    } else if (num == 2) { //Lats action was a removal
         fprintf(tmp,"%d",++count); 
     }
 
+    //Transforms previous file to the main file
     rename("data/main.txt","data/temp.txt");
     rename("data/prev.txt","data/main.txt");
     rename("data/temp.txt","data/prev.txt");
+
+    //Make last action a takeback
     fprintf(back,"%d",5);
     fclose(back);
     fclose(tmp);
