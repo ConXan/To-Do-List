@@ -12,7 +12,7 @@ char str[MAX_LEN];
 int endsDone(char *);
 
 int printList(void) {
-    FILE * fp = fopen("main.txt","r");
+    FILE * fp = fopen("data/main.txt","r");
     if (fp == NULL) {
         return 1;
     }
@@ -45,19 +45,19 @@ int printList(void) {
 
 int updateTask(int num, Task * task) {
     int c, cnt;
-    FILE * temp = fopen("count.txt","r");
+    FILE * temp = fopen("data/count.txt","r");
     if (temp == NULL) {
         fprintf(stderr,"Error, try again\n");
         return 1;
     }
-    FILE * fp = fopen("main.txt","r");
+    FILE * fp = fopen("data/main.txt","r");
     if (fp == NULL) {
         fprintf(stderr,"Error opening file\n");
         fclose(temp);
         return 1;
     }
 
-    FILE * tmp = fopen("temp.txt","w");
+    FILE * tmp = fopen("data/temp.txt","w");
     if (fp == NULL) {
         fprintf(stderr,"Error opening file\n");
         fclose(temp);
@@ -165,8 +165,8 @@ int updateTask(int num, Task * task) {
                 fputs(buffer,tmp);
             }
 
-            rename("main.txt","prev.txt");
-            rename("temp.txt","main.txt");
+            rename("data/main.txt","data/prev.txt");
+            rename("data/temp.txt","data/main.txt");
             printf("Task's status was updated successfully\n");
             fflush(stdout);
         }
@@ -194,8 +194,8 @@ int updateTask(int num, Task * task) {
 
         printf("\nTask's description was updated successfully\n");
 
-        rename("main.txt","prev.txt");
-        rename("temp.txt","main.txt");
+        rename("data/main.txt","data/prev.txt");
+        rename("data/temp.txt","data/main.txt");
     }
 
     fprintf(back,"%d",4);

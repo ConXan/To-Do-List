@@ -13,20 +13,20 @@ int addTask(Task * task) {
     printf("Provide task description (100 characters max!)\n");
     fflush(stdout);
    
-    FILE * fp = fopen("main.txt","a+");
+    FILE * fp = fopen("data/main.txt","a+");
     if (fp == NULL) {
         fprintf(stderr,"Error opening main file\n");
         return 1;
     }
     
-    FILE * tmp = fopen("prev.txt","w+");
+    FILE * tmp = fopen("data/prev.txt","w+");
     if (tmp == NULL) {
         fprintf(stderr,"Error opening secondary file\n");
         fclose(fp);
         return 1;
     }
     
-    FILE * temp = fopen("count.txt","r+");
+    FILE * temp = fopen("data/count.txt","r+");
     if (temp == NULL) {
         fprintf(stderr,"Error, try again\n");
         fclose(fp);
@@ -86,7 +86,7 @@ int removeTask(int num) {
     char buffer[MAX_TOTAL];
     char str[MAX_LEN];
 
-    FILE * temp = fopen("count.txt","r+");
+    FILE * temp = fopen("data/count.txt","r+");
     if (temp == NULL) {
         fprintf(stderr,"Error, try again\n");
         return 1;
@@ -108,14 +108,14 @@ int removeTask(int num) {
         c = getchar();
     }
 
-    FILE * fp = fopen("main.txt","a+");
+    FILE * fp = fopen("data/main.txt","a+");
     if (fp == NULL) {
         fprintf(stderr,"Error opening file\n");
         fclose(temp);
         return 1;
     }
 
-    FILE * tmp = fopen("temp.txt","w+");
+    FILE * tmp = fopen("data/temp.txt","w+");
     if (tmp == NULL) {
         fprintf(stderr,"Error opening file\n");
         fclose(fp);
@@ -180,8 +180,8 @@ int removeTask(int num) {
     fprintf(temp,"%d",--cnt);
     fprintf(back,"%d",2);
 
-    rename("main.txt","prev.txt");
-    rename("temp.txt","main.txt");
+    rename("data/main.txt","data/prev.txt");
+    rename("data/temp.txt","data/main.txt");
 
 
     for (i = 0; i < cnt; i ++) {
@@ -202,7 +202,7 @@ int takeback(void) {
         return -2;
     }
 
-    FILE * tmp = fopen("count.txt","r+");
+    FILE * tmp = fopen("data/count.txt","r+");
     if (tmp == NULL) {
         fprintf(stderr,"Error, try again\n");
         fclose(back);
@@ -231,9 +231,9 @@ int takeback(void) {
         fprintf(tmp,"%d",++count); 
     }
 
-    rename("main.txt","temp.txt");
-    rename("prev.txt","main.txt");
-    rename("temp.txt","prev.txt");
+    rename("data/main.txt","data/temp.txt");
+    rename("data/prev.txt","data/main.txt");
+    rename("data/temp.txt","data/prev.txt");
     fprintf(back,"%d",5);
     fclose(back);
     fclose(tmp);
