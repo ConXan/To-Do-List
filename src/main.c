@@ -23,11 +23,11 @@ int main() {
             test = getchar();
             printf("\n");
         } 
-        if (choice == 6) {
+        if (choice == 6) { //Exit
             return 0;
         } else {
             switch (choice) {
-                case 1:
+                case 1: //Add
                     Task * newTask = (Task *)malloc(sizeof(Task));
                     if (newTask == NULL) {
                         fprintf(stderr,"Error with malloc\n");
@@ -43,7 +43,7 @@ int main() {
                     }
                     free(newTask);
                     break;
-                case 2:
+                case 2: //Deletion
                     int num;
                     test = printList();
                     if (test) {
@@ -65,7 +65,7 @@ int main() {
                         printf("Task removed successfully!\n");
                     }
                     break;
-                case 3:
+                case 3: //Update
                     Task * task = (Task *)malloc(sizeof(Task));
                     if (task == NULL) {
                         fprintf(stderr,"Error with malloc\n");
