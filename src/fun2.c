@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "task.h"
-#include "fun1.h"
+#include "../include/task.h"
+#include "../include/fun1.h"
 
 #define MAX_TOTAL 130
 
@@ -34,7 +34,7 @@ int addTask(Task * task) {
         return 1;
     }
 
-    FILE * back = fopen("back.txt","r+");
+    FILE * back = fopen("data/back.txt","r+");
     if (back == NULL) {
         fprintf(stderr,"Error, try again\n");
         fclose(fp);
@@ -123,7 +123,7 @@ int removeTask(int num) {
         return 1;
     }
 
-    FILE * back = fopen("back.txt","r+");
+    FILE * back = fopen("data/back.txt","r+");
     if (back == NULL) {
         fprintf(stderr,"Error, try again\n");
         fclose(fp);
@@ -196,7 +196,7 @@ int removeTask(int num) {
 }
 
 int takeback(void) {
-    FILE * back = fopen("back.txt","r+");
+    FILE * back = fopen("data/back.txt","r+");
     if (back == NULL) {
         fprintf(stderr,"Error, try again\n");
         return -2;

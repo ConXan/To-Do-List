@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "task.h"
-#include "fun1.h"
-#include "fun2.h"
+#include "../include/task.h"
+#include "../include/fun1.h"
+#include "../include/fun2.h"
 
 void mainMenu(void);
 
