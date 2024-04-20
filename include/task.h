@@ -1,6 +1,6 @@
 #ifndef TASK_H
 #define TASK_H
-#define MAX_LEN 101
+#define MAX_LEN 101 //task description max length
 
 #include <stdbool.h>
 
