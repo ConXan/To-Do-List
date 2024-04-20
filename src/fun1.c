@@ -4,13 +4,14 @@
 #include "../include/task.h"
 #include "../include/fun2.h"
 
-#define MAX_TOTAL 130
+#define MAX_TOTAL 130 //rank (ex 3.) + description (max length 100) + DONE (optional)
 
 char buffer[MAX_TOTAL];
 char str[MAX_LEN];
 
 int endsDone(char *);
 
+//Function to print the task list
 int printList(void) {
     FILE * fp = fopen("data/main.txt","r");
     if (fp == NULL) {
@@ -36,6 +37,8 @@ int printList(void) {
         printf("%s",buffer);
     }
     printf("\n");
+
+    //Last task is 'Print list'
     fprintf(back,"%d",3);
 
     fclose(fp);
@@ -43,6 +46,7 @@ int printList(void) {
     return 0;
 }
 
+//Function to update the task
 int updateTask(int num, Task * task) {
     int c, cnt;
     FILE * temp = fopen("data/count.txt","r");
@@ -90,7 +94,7 @@ int updateTask(int num, Task * task) {
     }
 
     int lines;
-    char cpy[MAX_TOTAL];
+    char cpy[MAX_TOTAL]; //Variable to store the specific description
     lines = 1;
     task->status = true;
     while (lines < num) {
@@ -98,10 +102,10 @@ int updateTask(int num, Task * task) {
         lines ++;
     }
     fgets(buffer,sizeof(buffer),fp);
-    snprintf(cpy,MAX_TOTAL,"%s",buffer);
+    snprintf(cpy,MAX_TOTAL,"%s",buffer); //String copying always with snprintf()
     rewind(fp);
 
-    if (endsDone(buffer)) {
+    if (endsDone(buffer)) { //Checks whether the selected task is already marked DONE
         printf("\n");
         printf("This task is already finished, you can't update its description nor its status\n");
         fclose(tmp);
@@ -151,20 +155,22 @@ int updateTask(int num, Task * task) {
             printf("Task was removed successfully\n\n");
         } else if (ch == 'n' || ch == 'N') {
             lines = 1;
-            while (lines < num) {
+            while (lines < num) { //Write up to the previous task of the selected one
                 fgets(buffer,sizeof(buffer),fp);
                 fputs(buffer,tmp);
                 lines ++;
             }
             fgets(buffer,sizeof(buffer),fp);
-            sscanf(cpy,"%d. %[^\n]100s", &id, str);
-            snprintf(buffer,sizeof(buffer), "%d. %s \x1b[31mDONE\x1b[0m\n", id, str);
+            sscanf(cpy,"%d. %[^\n]100s", &id, str); //Extract the id number and dexcription of the task
+            snprintf(buffer,sizeof(buffer), "%d. %s \x1b[31mDONE\x1b[0m\n", id, str); //Adds DONE with red color to the end of the description
             fputs(buffer,tmp);
 
-            while (fgets(buffer,sizeof(buffer),fp) != NULL) {
+            //Print the rest of the list if there is any
+            while (fgets(buffer,sizeof(buffer),fp) != NULL) { 
                 fputs(buffer,tmp);
             }
 
+            //Method for having access to the previous state of the list
             rename("data/main.txt","data/prev.txt");
             rename("data/temp.txt","data/main.txt");
             printf("Task's status was updated successfully\n");
@@ -198,6 +204,7 @@ int updateTask(int num, Task * task) {
         rename("data/temp.txt","data/main.txt");
     }
 
+    //Last task is an update
     fprintf(back,"%d",4);
 
     fclose(back);
@@ -212,7 +219,7 @@ int endsDone(char * str) {
     if (len < 4) {
         return 0;
     }
-    if (str[len-2] == 'm' && str[len-3] == '0') {
+    if (str[len-2] == 'm' && str[len-3] == '0') { //Checks if the last 2 characters of the string are m0, meaning the task is DONE (see line 163)
         return 1;
     }
 
