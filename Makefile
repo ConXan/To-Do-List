@@ -1,30 +1,30 @@
-CC = gcc
+# Compiler
+CC := gcc
 
-TARGET = task
+# Directories
+SRCDIR := src
+INCDIR := include
+OBJDIR := obj
 
-SRCS = main.c fun1.c fun2.c
+# Files
+SRCS := $(wildcard $(SRCDIR)/*.c)
+HEADERS := $(wildcard $(INCDIR)/*.h)
+OBJS := $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
 
-OBJS = $(SRCS:.c=.o) #include all srcs files
+# Compiler flags
+CFLAGS := -I$(INCDIR)
 
-DEPS = fun1.h fun2.h task.h
+# Target executable
+TARGET := task
 
-all: $(TARGET)
-
-#Executable files
+# Main target
 $(TARGET): $(OBJS)
-	$(CC) -o $@ $(OBJS)
+	$(CC) -o $@ $^
 
-#Object files
-%.o: %.c $(DEPS)
-	$(CC) -c -o $@ $<
+# Rule for compiling object files
+$(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEADERS)
+	$(CC) $(CFLAGS) -c -o $@ $<
 
-OBJDIR = obj
-
-SRCDIR = src
-
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
-	$(CC) -c $< -o $@
-
-#Clean files
+# Clean rule
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJDIR)/*.o $(TARGET)
