@@ -1,7 +1,6 @@
-# Compiler
 CC := gcc
 
-# Directories
+# Dir
 SRCDIR := src
 INCDIR := include
 OBJDIR := obj
@@ -11,20 +10,19 @@ SRCS := $(wildcard $(SRCDIR)/*.c)
 HEADERS := $(wildcard $(INCDIR)/*.h)
 OBJS := $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
 
-# Compiler flags
+# Flags
 CFLAGS := -I$(INCDIR)
 
-# Target executable
+# exe
 TARGET := task
 
 # Main target
 $(TARGET): $(OBJS)
 	$(CC) -o $@ $^
 
-# Rule for compiling object files
+# obj
 $(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEADERS)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-# Clean rule
 clean:
 	rm -f $(OBJDIR)/*.o $(TARGET)
