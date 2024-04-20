@@ -1,4 +1,4 @@
-# To-Do-List
+# To-Do List
 
 ## A simplified, command-line To-Do list / Task Manager.
 
@@ -29,3 +29,16 @@ Here are some screenshots showcasing the functionality of the project:
 ![Screenshot 2024-04-17 153121](https://github.com/ConXan/To-Do-List/assets/146641298/a97ee101-7d01-4483-807c-b892a1f41d8f)
 
 ![Screenshot 2024-04-17 153242](https://github.com/ConXan/To-Do-List/assets/146641298/68709d88-3258-41a2-89c7-dc04d947a202)
+
+## Installation
+
+### Prerequisites
+
+For all platforms, having installed the GNU C Compiler (gcc) is obligatory. If you haven't installed it yet, you can download it from the official GNU website or install it via your package manager.
+Also having downloaded Makefile and Git will make the whole process way more straightforward.
+
+### 1. Linux 
+
+**Clone the Repository**
+```bash
+git clone 
