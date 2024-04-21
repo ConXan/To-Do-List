@@ -69,7 +69,7 @@ gcc -o task obj/fun1.o obj/fun2.o obj/main.o
 ```bash
 ./task
 ```
-Done! Now you can use ./task (while in the directory) whenever you want to use the program.
+Done! Now you can use **./task** (while in the directory) whenever you want to use the program.
 
 ### 2. Windows
 Not entirely supported on Windows yet (found some minor issues), however you can still install the project following the aforementioned instructions, or first download it as a ZIP, extract the contents, navigate to the corresponding directories and compile manually with the commands above. 
@@ -81,3 +81,14 @@ If you encounter any issues while using the software please let me know.
 
 ## Notes about the project 
 
+### Files
+main.txt is the file in which the list is stored, and prev.txt stores the previous status of a list (after an action occurs). 
+
+back.txt and count.txt are both first initialized with 0 and are auxiliary files in the project. 
+temp.txt is a temporary file that assists some functionalities during the runtime of the program 
+
+### Misc
+In general, sscanf() and snprintf() are used a lot.
+The former, to extract the individual components of a string, such as its rank in the list, or its description for further manipulation, and the latter to construct the desired string and safely (no buffer overflow:) store the string.
+The task's description can be up to 100 characters long. If you input more than that, it won't necessarily oveflow, it will just write up to 100 characters plus the NULL terminator.
+The addition of the Task struct is just for practice reasons only, the same result could have been achieved without its use, however it provides the overall project with clarity.
