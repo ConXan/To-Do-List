@@ -38,10 +38,10 @@ Here are some screenshots showcasing the functionality of the project:
 
 ### Prerequisites
 
-For all platforms, having installed the GNU C Compiler (gcc) is obligatory. If you haven't installed it yet, you can download it from the official GNU website or install it via your package manager.
+Having installed the GNU C Compiler (gcc) is obligatory. If you haven't installed it yet, you can download it from the official GNU website or install it via your package manager.
 Also having downloaded Makefile and Git will make the whole process way more straightforward.
 
-### 1. Linux 
+### Linux 
 
 **Clone the Repository**
 ```bash
@@ -71,5 +71,8 @@ gcc -o task obj/fun1.o obj/fun2.o obj/main.o
 ```
 Done! Now you can use ./task (while in the directory) whenever you want to use the program.
 
-### 2. Windows
-Almost the same procedure, however if you don't have Makefile and Git installed, you can download the zip from this repository and compile with the aforementioned commands (MinGW has to be installed and added to your PATH) in command prompt.
+## Contributing
+
+Contributions, feedback, and bug reports are welcome and greatly appreciated! If you have ideas for new features, enhancements, or bug fixes, please feel free to open an issue or submit a pull request.
+If you encounter any issues while using the software please let me know.
+
