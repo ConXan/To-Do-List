@@ -79,3 +79,5 @@ Not entirely supported on Windows yet (found some minor issues), however you can
 Contributions, feedback, and bug reports are welcome and greatly appreciated! If you have ideas for new features, enhancements, or bug fixes, please feel free to open an issue or submit a pull request.
 If you encounter any issues while using the software please let me know.
 
+## Notes about the project 
+
