@@ -71,6 +71,9 @@ gcc -o task obj/fun1.o obj/fun2.o obj/main.o
 ```
 Done! Now you can use ./task (while in the directory) whenever you want to use the program.
 
+### 2. Windows
+Not entirely supported on Windows yet (found some minor issues), however you can still install the project following the aforementioned instructions, or first download it as a ZIP, extract the contents, navigate to the corresponding directories and compile manually with the commands above. 
+
 ## Contributing
 
 Contributions, feedback, and bug reports are welcome and greatly appreciated! If you have ideas for new features, enhancements, or bug fixes, please feel free to open an issue or submit a pull request.
